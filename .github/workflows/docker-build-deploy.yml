@@ -6,7 +6,7 @@ on:
       - main  # Or your preferred branch
 
 jobs:
-  build-and-push:
+  build:
     runs-on: ubuntu-latest
 
     steps:
