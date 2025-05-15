@@ -29,6 +29,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/my-app:latest
 
+
       # Optional: Deploy step (e.g., via SSH)
       # - name: Deploy to server
       #   uses: appleboy/ssh-action@v0.1.7
