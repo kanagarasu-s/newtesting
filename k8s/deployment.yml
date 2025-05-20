@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: myapp
-        image: kanagarasu/sampless:latest
+        image: kanagarasu/sampless:${BUILD_NUMBER}
         ports:
         - containerPort: 80
 ---
