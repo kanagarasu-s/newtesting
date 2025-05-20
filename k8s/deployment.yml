@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: myapp
-        image: kanagarasu/sampless:BUILD_TAG
+        image: kanagarasu/sampless:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 80
