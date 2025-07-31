@@ -76,6 +76,42 @@ A simple NGINX-based web application demonstrating Docker build, CI/CD with GitH
 └── README.md
 ```
 
+# Kubernetes Deployment with ArgoCD, Ingress, and Docker
+
+This project demonstrates a complete CI/CD pipeline using **Docker**, **Kubernetes**, **ArgoCD**, and **NGINX Ingress Controller**.
+
+---
+
+## 🔧 Project Structure
+
+| Folder/File              | Description                                   |
+|--------------------------|-----------------------------------------------|
+| `argocd/`                | Contains ArgoCD Application YAMLs             |
+| `ingress/`               | Contains NGINX Ingress resources              |
+| `k8s/`                   | Base Kubernetes manifests (deployment, svc)   |
+| `Dockerfile`             | Docker image definition for the application   |
+| `index.html`             | Sample web UI served by the container         |
+| `README.md`              | This documentation file                       |
+
+---
+
+## 🚀 Prerequisites
+
+- Kubernetes Cluster (Minikube / EKS / K3s etc.)
+- `kubectl` configured
+- ArgoCD installed
+- NGINX Ingress Controller installed
+- Docker
+
+---
+
+## 📦 Build & Push Docker Image
+
+```bash
+docker build -t your-dockerhub-username/your-app-name:latest .
+docker push your-dockerhub-username/your-app-name:latest
+
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first.
@@ -86,4 +122,4 @@ Pull requests are welcome. For major changes, please open an issue first.
 
 ## Contact
 
-Maintained by [kanagrasuaws](https://github.com/kanagrasuaws)
+Maintained by [kanagrasu-s](https://github.com/kanagrasu-s)
