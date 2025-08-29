@@ -1,1 +1,51 @@
+local.file_match "apache" {
+  path_targets = [
+    { path = "/var/log/apache2/access.log" },
+  ]
+  sync_period = "5s"
+}
+
+loki.source.file "apache" {
+  targets       = local.file_match.apache.targets
+  tail_from_end = false
+  forward_to    = [loki.process.apache_labels.receiver]
+}
+
+loki.process "apache_labels" {
+  // Merge multi-line logs (example: lines not starting with an IP will be merged)
+  stage.multiline {
+    firstline = "^[0-9.:]+ - "
+  }
+
+  // Extract fields from Apache log format:
+  // 127.0.0.1 - - [27/Aug/2025:00:00:08 +0530] "GET /index.html HTTP/1.1" 200 1234
+  stage.regex {
+    expression = "^(?P<client_ip>[0-9.:]+) - - \\[[^]]+\\] \\\"(?P<method>[A-Z]+) (?P<path>[^ ]+) [^\\\"]+\\\" (?P<status>[0-9]{3}) (?P<bytes>[0-9-]+)"
+  }
+
+  // Promote captured values to labels for Grafana queries
+  stage.labels {
+    values = {
+      method    = "",
+      status    = "",
+    }
+  }
+
+  // Add static labels
+  stage.static_labels {
+    values = {
+      job      = "apache_access",
+      host     = "apache_server",
+      location = "/var/log/apache2/access.log",
+    }
+  }
+
+  forward_to = [loki.write.apache.receiver]
+}
+
+loki.write "apache" {
+  endpoint {
+    url = "http://3.84.139.48:3100//loki/api/v1/push"
+  }
+}
 
