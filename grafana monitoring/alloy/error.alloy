@@ -1,1 +1,35 @@
+local.file_match "local_files2" {
+  path_targets = [{ "__path__" = "/var/log/apache2/error.log" }]
+  sync_period  = "5s"
+}
+
+loki.source.file "local_files2" {
+  targets    = local.file_match.local_files2.targets
+  forward_to = [loki.process.add_labels2.receiver]
+}
+
+loki.process "add_labels2" {
+  forward_to = [loki.write.local_loki2.receiver]
+
+  stage.static_labels {
+    values = {
+      job         = "apache_error",
+      server      = "apache_server",
+      location    = "/var/log/apache2",
+    }
+  }
+
+  stage.labels {
+    values = {
+      job          = " ",
+      server       = " ",
+    }
+  }
+}
+
+loki.write "local_loki2" {
+  endpoint {
+    url = "http://54.87.33.189:3100/loki/api/v1/push"
+  }
+}
 
