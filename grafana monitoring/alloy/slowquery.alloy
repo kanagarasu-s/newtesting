@@ -1,1 +1,98 @@
+local.file_match "slow1" {
+  path_targets = [{ "__path__" = "/home/ubuntu/slowquery/mysql-slow7.log" }]
+  sync_period  = "5s"
+}
 
+loki.source.file "slow1" {
+  targets    = local.file_match.slow1.targets
+  tail_from_end = false
+  forward_to = [loki.process.add_slow1.receiver]
+}
+
+loki.process "add_slow1" {
+
+stage.multiline {
+    // MySQL slow query entries start with "# Time: ..."
+    firstline = "^# Time: "
+  }
+
+/*stage.regex {
+    expression = "# Time: (?P<ts>[0-9T:-]+).*# Query_time: (?P<qtime>[0-9\\.]+).*Rows_examined: (?P<rows_examined>[0-9]+).*Rows_sent: (?P<rows_sent>[0-9]+)"
+  }*/
+
+ // Extract SQL query type (COUNT, SELECT, SUM, etc.)
+  stage.regex {
+    expression = "(?i)select\\s+(?P<querytype>\\w+)"
+  }
+
+
+stage.regex {
+    expression = "# Time: (?P<ts>[0-9T:-]+)"
+  }
+
+  /*// Extract Query_time, Rows_sent, Rows_examined
+  stage.regex {
+    expression = "# Query_time: (?P<qtime>[0-9\\.]+).*?Rows_sent: (?P<rows_sent>[0-9]+).*?Rows_examined: (?P<rows_examined>[0-9]+)"
+  }*/
+
+  // Extract SQL query type
+  stage.regex {
+    expression = "(?i)select\\s+(?P<querytype>\\w+)"
+  }
+
+/*  // Extract Query_time, Rows_sent, Rows_examined
+  stage.regex {
+    expression = "# Query_time: (?P<qtime>[0-9\\.]+).*?Rows_sent: (?P<rows_sent>[0-9]+).*?Rows_examined: (?P<rows_examined>[0-9]+)"
+  }*/
+
+
+stage.regex {
+  expression = "# Query_time: (?P<query_time>[0-9\\.]+)\\s+Lock_time: [0-9\\.]+\\s+Rows_sent: (?P<rows_sent>[0-9]+)\\s+Rows_examined: (?P<rows_examined>[0-9]+)"
+}
+
+
+stage.regex {
+    expression = "(?s)(SELECT.*)"
+  }
+
+stage.regex {
+    expression = "(?i)select\\s+(?P<query_type>\\w+)"
+  }
+
+stage.regex {
+    expression = "(?s)(?P<sql>(SELECT|UPDATE|DELETE|INSERT).*;)"
+  }
+
+  stage.labels {
+    values = {
+       ts           = "",
+      query_time    = "",
+      rows_examined = "",
+      rows_sent     = "",
+      querytype     = "",
+      query         = "",
+      sql           = "",
+    }
+  }
+
+stage.output {
+    source = "sql"
+  }
+
+
+
+  stage.static_labels {
+    values = {
+      job         = "slowquery_logs",
+       host       = "mysql_server",
+      location    = "/home/ubuntu/slowquery",
+    }
+  }
+    forward_to = [loki.write.slow1.receiver]
+}
+
+loki.write "slow1" {
+  endpoint {
+    url = "http://54.87.33.189:3100/loki/api/v1/push"
+  }
+}
