@@ -1,4 +1,5 @@
-```local.file_match "apache" {
+```
+local.file_match "apache" {
   path_targets = [
     { __path__ = "/home/ubuntu/logs/access1-Copy.log" },
   ]
@@ -44,4 +45,5 @@ loki.write "apache" {
   endpoint {
     url = "http://54.81.159.127:3100/loki/api/v1/push"
   }
+```
 }
