@@ -1,4 +1,4 @@
-local.file_match "apache" {
+```local.file_match "apache" {
   path_targets = [
     { __path__ = "/home/ubuntu/logs/access1-Copy.log" },
   ]
