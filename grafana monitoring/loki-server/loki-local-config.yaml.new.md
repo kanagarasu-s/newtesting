@@ -1,4 +1,4 @@
-' ' '
+'''
 ## loki-local-config.yaml file
 
 
