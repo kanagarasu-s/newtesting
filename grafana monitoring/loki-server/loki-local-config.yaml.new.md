@@ -1,6 +1,6 @@
-
+' ' '
 ## loki-local-config.yaml file
-'''
+
 
 auth_enabled: false
 
