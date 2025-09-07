@@ -12,58 +12,59 @@ echo "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com stab
 sudo apt-get update
 ```
 # install alloy.
-
+```
 sudo apt-get install alloy
 
 # to start alloy, run the following command in a terminal
-
+```
 sudo systemctl start alloy
 
 # to automatically run alloy when the system starts, run the following command in a terminal.
-
+```
 sudo systemctl enable alloy.service
 
 # to verify that the service is running, run the following command in a termainal.
-
+```
 sudo systemctl status alloy
 
 # to restart alloy, run the following command in a terminal.
-
+```
 sudo systemctl restart alloy
 
 # to stop alloy, run the following command in a terminal.
-
+```
 sudo systemctl stop alloy
 
 # to view alloy log files, run the following command in a terminal.
-
+```
 sudo journalctl -u alloy
 
 
 # default configure
-vi /etc/default/alloy
 
-## Path:
-## Description: Grafana Alloy settings
-## Type:        string
-## Default:     ""
-## ServiceRestart: alloy
-#
-# Command line options for Alloy.
-#
-# The configuration file holding the Alloy config.
+vi /etc/default/alloy
+```
+Path:
+ Description: Grafana Alloy settings
+ Type:        string
+ Default:     ""
+ ServiceRestart: alloy
+
+Command line options for Alloy.
+
+The configuration file holding the Alloy config.
 CONFIG_FILE="/etc/alloy"
 
-# User-defined arguments to pass to the run command.
+User-defined arguments to pass to the run command.
 CUSTOM_ARGS="--server.http.listen-addr=0.0.0.0:12345"
 
-# Restart on system upgrade. Defaults to true.
+Restart on system upgrade. Defaults to true.
 RESTART_ON_UPGRADE=true
 
 
 
 # to configure, add user root run the following command in a terminal
-
+```
 [Unit]
 Description= Vendor-agnostic OpenTelemetry Collector distribution with programmable pipelines
 Documentation=https://grafana.com/docs/alloy
