@@ -1,5 +1,7 @@
 '''
 ##  loki installation
+'''
+sh 
 loki download url
 https://github.com/grafana/loki/releases/
 download latest version for loki.
