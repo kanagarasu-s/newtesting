@@ -6,9 +6,8 @@ loki download url
 https://github.com/grafana/loki/releases/
 download latest version for loki.
 '''
-
-## zip command
 """
+## zip command
 apt install unzip
 """
 ## unzip loki file
