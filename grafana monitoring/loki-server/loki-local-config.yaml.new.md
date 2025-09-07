@@ -1,5 +1,6 @@
-## loki-local-config.yaml file
 
+## loki-local-config.yaml file
+'''
 
 auth_enabled: false
 
@@ -69,4 +70,7 @@ frontend:
   encoding: protobuf
 
 #analytics:
+
+
+'''
 #reporting_enabled: false
