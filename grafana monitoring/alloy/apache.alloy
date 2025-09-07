@@ -1,4 +1,7 @@
-root@ip-172-31-37-152:/etc/alloy# cat apache.alloy
+
+## apache.alloy config file created
+ vi apache.alloy
+```
 local.file_match "local_files101" {
   path_targets = [{ "__path__" = "/home/ubuntu/access/access.log" }]
   sync_period  = "5s"
