@@ -1,3 +1,7 @@
+
+## created slowquery alloy config file
+```
+
 local.file_match "slow1" {
   path_targets = [{ "__path__" = "/home/ubuntu/slowquery/mysql-slow7.log" }]
   sync_period  = "5s"
