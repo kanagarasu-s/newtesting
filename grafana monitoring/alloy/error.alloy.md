@@ -20,7 +20,7 @@ stage.multiline {
   }
 
 stage.regex {
-    expression = "^\\[(?P<timestamp>[^\\]]+)\\] \\[(?P<module>[^:]+):(?P<level>[^\\]]+)\\] \\[pid (?P<pid>[0-9]+)\\]( \\[client (?P<client_ip>[0-9.]+):                                      (?P<port>[0-9]+)\\])? (?P<error_code>AH[0-9]+): (?P<message>.*)"
+    expression = "^\\[(?P<timestamp>[^\\]]+)\\] \\[(?P<module>[^:]+):(?P<level>[^\\]]+)\\] \\[pid (?P<pid>[0-9]+)\\]( \\[client (?P<client_ip>[0-9.]+):(?P<port>[0-9]+)\\])? (?P<error_code>AH[0-9]+): (?P<message>.*)"
   }
 
   stage.labels {
