@@ -8,7 +8,7 @@ download latest version for loki.
 '''
 """
 ## zip command
-'''apt install unzip '''
+apt install unzip
 
 
 ## unzip loki file
