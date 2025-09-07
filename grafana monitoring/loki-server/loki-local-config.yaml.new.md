@@ -1,4 +1,4 @@
-'''bash
+```bash
 ## loki-local-config.yaml file
 
 
