@@ -124,4 +124,3 @@ systemctl status loki
 systemctl enable loki
 ```
 
-```
