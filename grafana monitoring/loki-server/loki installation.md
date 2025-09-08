@@ -1,18 +1,15 @@
 
-##  loki installation
+##  loki download latest version url
+```
+https://github.com/grafana/loki/releases/download latest version for loki.
 ```
 
-loki download url
-https://github.com/grafana/loki/releases/
-download latest version for loki.
-```
-
-## zip command
+## unzip command
 ```
 apt install unzip
 
 ```
-## unzip loki file
+## unzip command
 ```
 unzip loki-linux-amd64.zip
 ```
@@ -21,10 +18,14 @@ unzip loki-linux-amd64.zip
 chmod +x loki-linux-amd64
 sudo mv loki-linux-amd64 /usr/local/bin/loki
 sudo chmod +x /usr/local/bin/loki
+
+```
+## create loki location
+```
+vi loki-local-config.yaml
 ```
 ## loki configure file download
 ```
-vi loki-local-config.yaml
 auth_enabled: false
 
 server:
@@ -97,7 +98,7 @@ frontend:
 ```
 
 
-## create systemd loki service file
+## create loki service file
 ```
 sudo vi /etc/systemd/system/loki.service
 ```
@@ -113,8 +114,6 @@ LimitNOFILE=65536
 WantedBy=multi-user.target
 ```
 
-save and run services
-```
 ## services run command
 ```
 
@@ -123,5 +122,6 @@ systemctl start loki
 systemctl status loki
 
 systemctl enable loki
+```
 
 ```
