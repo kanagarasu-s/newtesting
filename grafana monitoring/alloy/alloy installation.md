@@ -59,7 +59,10 @@ CUSTOM_ARGS="--server.http.listen-addr=0.0.0.0:12345"
 Restart on system upgrade. Defaults to true.
 RESTART_ON_UPGRADE=true
 
-
+## view service alloy.
+```
+ vi /usr/lib/systemd/system/alloy.service
+```
 
 # Systemd Service Configuration.
 ```
