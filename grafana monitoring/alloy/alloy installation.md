@@ -51,15 +51,21 @@ Path:
 Command line options for Alloy.
 
 The configuration file holding the Alloy config.
-CONFIG_FILE="/etc/alloy"
+CONFIG_FILE="/etc/alloy/config.alloy"
 
 User-defined arguments to pass to the run command.
-CUSTOM_ARGS="--server.http.listen-addr=0.0.0.0:12345"
+CUSTOM_ARGS=" "
 
 Restart on system upgrade. Defaults to true.
 RESTART_ON_UPGRADE=true
 
-## view service alloy.
+## Edit /etc/default/alloy to set configuration values
+```
+CONFIG_FILE="/etc/alloy"
+CUSTOM_ARGS="--server.http.listen-addr=0.0.0.0:12345"
+```
+
+## Edit the Alloy systemd service file.
 ```
  vi /usr/lib/systemd/system/alloy.service
 ```
