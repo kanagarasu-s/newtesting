@@ -65,7 +65,7 @@ CONFIG_FILE="/etc/alloy"
 CUSTOM_ARGS="--server.http.listen-addr=0.0.0.0:12345"
 ```
 
-## Edit the Alloy systemd service file.
+## Edit the Alloy user name systemd service file.
 ```
  vi /usr/lib/systemd/system/alloy.service
 ```
