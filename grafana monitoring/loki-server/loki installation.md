@@ -98,9 +98,11 @@ frontend:
 ```
 
 
-## create loki service file
+## create loki service location
 ```
 sudo vi /etc/systemd/system/loki.service
+```
+## loki service file
 ```
 [Unit]
 Description=Loki Log Aggregation System
