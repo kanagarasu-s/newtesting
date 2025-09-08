@@ -4,7 +4,7 @@
 https://github.com/grafana/loki/releases/download latest version for loki.
 ```
 
-## unzip command
+## install unzip package on ubuntu
 ```
 apt install unzip
 
