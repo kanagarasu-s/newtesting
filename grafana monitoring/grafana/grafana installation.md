@@ -43,6 +43,6 @@ Open your browser and go to: http://<your-server-ip>:3000
 ```
 Username: admin
 Password: admin
-
-You will be prompted to change the default password upon first login.
 ```
+You will be prompted to change the default password upon first login.
+
