@@ -33,9 +33,7 @@ loki.process "add_labels" {
   stage.static_labels {
     values = {
       job      = "apache_logs",
-      host     = "apache-server",
-      location = "/var/log/apache2",
-    }
+      }
   }
  
   forward_to = [loki.write.apache.receiver]
