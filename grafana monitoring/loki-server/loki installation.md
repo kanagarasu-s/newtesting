@@ -1,17 +1,19 @@
-'''
+
 ##  loki installation
-'''
+```
 
 loki download url
 https://github.com/grafana/loki/releases/
 download latest version for loki.
-'''
-"""
+
+
 ## zip command
+```
 apt install unzip
 
 
 ## unzip loki file
+```
 unzip loki-linux-amd64.zip
 ##   loki file permission and move /usr/bin/loki location and executed permission
 chmod +x loki-linux-amd64
