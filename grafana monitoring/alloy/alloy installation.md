@@ -1,47 +1,45 @@
 ## alloy install on ubuntu 24.04
-================================
 
-## import the GPG KEY and add the Grafana package repository.
-```bash
+## Add Grafana Package Repository and GPG Key.
+```
 sudo mkdir -p /etc/apt/keyrings/
 wget -q -O - https://apt.grafana.com/gpg.key | gpg --dearmor | sudo tee /etc/apt/keyrings/grafana.gpg > /dev/null
 echo "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com stable main" | sudo tee /etc/apt/sources.list.d/grafana.list
 ```
-## update the repositories.
-```bash
+## Update Package Repositories.
+```
 sudo apt-get update
 ```
 # install alloy.
 ```
 sudo apt-get install alloy
-
-# to start alloy, run the following command in a terminal
+```
+# Start Alloy Service.
 ```
 sudo systemctl start alloy
-
-# to automatically run alloy when the system starts, run the following command in a terminal.
+```
+# Enable Alloy to Start on Boot.
 ```
 sudo systemctl enable alloy.service
-
-# to verify that the service is running, run the following command in a termainal.
+```
+# Check Alloy Service Status.
 ```
 sudo systemctl status alloy
-
-# to restart alloy, run the following command in a terminal.
+```
+# Restart Alloy Service.
 ```
 sudo systemctl restart alloy
-
-# to stop alloy, run the following command in a terminal.
+```
+# Stop Alloy Service.
 ```
 sudo systemctl stop alloy
-
-# to view alloy log files, run the following command in a terminal.
+```
+# View Alloy Logs.
 ```
 sudo journalctl -u alloy
-
-
-# default configure
-
+```
+# Default Configuration File
+```
 vi /etc/default/alloy
 ```
 Path:
@@ -63,7 +61,7 @@ RESTART_ON_UPGRADE=true
 
 
 
-# to configure, add user root run the following command in a terminal
+# Systemd Service Configuration.
 ```
 [Unit]
 Description= Vendor-agnostic OpenTelemetry Collector distribution with programmable pipelines
@@ -85,6 +83,7 @@ SendSIGKILL=no
 
 [Install]
 WantedBy=multi-user.target
+```
 
 
 
