@@ -38,9 +38,7 @@ loki.process "parse_slow_logs" {
   stage.static_labels {
     values = {
       job      = "slowquery_logs_static",
-      host     = "mysql-server",
-      location = "/home/ubuntu/slowquery",
-    }
+      }
   }
 
   forward_to = [loki.write.slow_logs.receiver]
