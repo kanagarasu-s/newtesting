@@ -5,22 +5,25 @@
 loki download url
 https://github.com/grafana/loki/releases/
 download latest version for loki.
-
+```
 
 ## zip command
 ```
 apt install unzip
 
-
+```
 ## unzip loki file
 ```
 unzip loki-linux-amd64.zip
+```
 ##   loki file permission and move /usr/bin/loki location and executed permission
+```
 chmod +x loki-linux-amd64
 sudo mv loki-linux-amd64 /usr/local/bin/loki
 sudo chmod +x /usr/local/bin/loki
-
+```
 ## loki configure file download
+```
 vi loki-local-config.yaml
 auth_enabled: false
 
@@ -91,12 +94,13 @@ frontend:
 
 #analytics:
 #reporting_enabled: false
-
+```
 
 
 ## create systemd loki service file
+```
 sudo vi /etc/systemd/system/loki.service
-
+```
 [Unit]
 Description=Loki Log Aggregation System
 After=network.target
@@ -107,10 +111,12 @@ Restart=always
 LimitNOFILE=65536
 [Install]
 WantedBy=multi-user.target
+```
 
 save and run services
-
+```
 ## services run command
+```
 
 systemctl start loki
 
@@ -118,4 +124,4 @@ systemctl status loki
 
 systemctl enable loki
 
-'''
+```
