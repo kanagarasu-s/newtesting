@@ -30,7 +30,6 @@ loki.process "parse_slow_logs" {
   stage.labels {
     values = {
       query_time = "",
-      query      = "",
     }
   }
 
