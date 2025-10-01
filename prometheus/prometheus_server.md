@@ -72,4 +72,16 @@ sudo firewall-cmd --reload
 ```
 http://<your-server-ip>:9090
 ```
-
+## Configure Prometheus to Scrape Node Exporter
+```
+sudo vi /etc/prometheus/prometheus.yml
+```
+```
+  - job_name: "node_exporter"
+    static_configs:
+      - targets: ["localhost:9100"]
+```
+## Restart Prometheus:
+```
+sudo systemctl restart prometheus
+```
