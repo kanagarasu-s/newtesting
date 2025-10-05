@@ -12,7 +12,14 @@ PF
 Host Resources
 UCD
 ```
+Install snmpwalk package:
+=========================
 snmpwalk comes from the package net-snmp-utils, and it’s asking if you want to install it. You should go ahead and install it so you can run SNMP queries.
 ```
 sudo dnf install net-snmp-utils
+```
+Test SNMP access:
+=================
+```
+snmpwalk -v2c -c public 192.168.130.254 1.3.6.1.2.1.1.1.0
 ```
