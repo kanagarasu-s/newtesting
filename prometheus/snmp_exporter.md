@@ -6,7 +6,7 @@ Prerequisites
 Before starting, ensure the following:
 Enable SNMP service with modules on your pfSense host.
 Enabled modules:
-===============
+
 MibII
 PF
 Host Resources
