@@ -28,7 +28,6 @@ sudo chown prometheus:prometheus /usr/local/bin/prometheus /usr/local/bin/promto
 ```
 ## Move Config Files
 ```
-sudo cp -r consoles/ console_libraries/ /etc/prometheus/
 sudo cp prometheus.yml /etc/prometheus/
 sudo chown -R prometheus:prometheus /etc/prometheus
 ```
