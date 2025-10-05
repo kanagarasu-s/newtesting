@@ -96,7 +96,7 @@ auths:
     version: 2
 
 modules:
-  pfsense:
+  shelbyville:
     walk:
       - 1.3.6.1.2.1.2                 # MIB2::interfaces
       - 1.3.6.1.2.1.31.1              # MIB2::ifMIB::ifXTable
