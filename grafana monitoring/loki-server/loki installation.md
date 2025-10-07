@@ -1,7 +1,7 @@
 
 ##  Download Loki Latest Version
 ```
-https://github.com/grafana/loki/releases/download.
+https://github.com/grafana/loki/releases
 ```
 
 ## Install unzip (if not installed)
