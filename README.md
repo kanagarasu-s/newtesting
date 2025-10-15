@@ -1,4 +1,4 @@
-# newtesting..
+# newtesting...
 
 A simple NGINX-based web application demonstrating Docker build, CI/CD with GitHub Actions, and deployment to a remote server and Kubernetes.
 
