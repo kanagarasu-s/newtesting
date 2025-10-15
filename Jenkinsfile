@@ -1,11 +1,14 @@
 pipeline {
     agent any
-
     stages {
-        stage('Hello') {
+        stage('Debug Git') {
             steps {
-                echo 'Hello World'
+                sh '''
+                git ls-remote https://github.com/kanagarasu-s/newtesting.git
+                git rev-parse HEAD
+                '''
             }
         }
     }
 }
+
